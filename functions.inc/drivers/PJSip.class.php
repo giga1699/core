@@ -429,9 +429,9 @@ class PJSip extends \FreePBX\modules\Core\Drivers\Sip {
 			);
         }
 
-		$debug = $this->freepbx->Sipsettings->getConfig('pjsip_debug');
-		if($debug) {
-			$conf['pjsip.conf']['global']['debug'] = (empty($debug) || $debug === 'yes') ? 'yes' : 'no';
+		$debug_pjsip  = $this->freepbx->Sipsettings->getConfig('pjsip_debug');
+		if(isset($debug_pjsip)) {
+			$conf['pjsip.conf']['global']['debug'] = $debug_pjsip  === 'yes' ? 'yes' : 'no';
 		}
 		$debug = $this->freepbx->Sipsettings->getConfig('pjsip_keep_alive_interval');
 		if($debug) {
